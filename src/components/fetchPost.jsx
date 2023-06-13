@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import FetchedPostRows from "./fetchedPostRows";
+import FetchedPostRows from "./FetchedPostRows";
 
 const COHORT_NAME = '2304-FTB-ET-WEB-FT';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
