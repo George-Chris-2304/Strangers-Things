@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { registerUser } from "../../api adapters";
+import { loginUser } from "../../api adapters";
 import { useNavigate } from "react-router-dom";
 
-const Register = (props) => {
+const Login = (props) => {
   const setIsLoggedIn = props.setIsLoggedIn;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +12,7 @@ const Register = (props) => {
     e.preventDefault();
 
     try {
-      const result = await registerUser(username, password);
+      const result = await loginUser(username, password);
       console.log(result);
 
       localStorage.setItem("token", result.token);
@@ -53,4 +53,4 @@ const Register = (props) => {
   );
 };
 
-export default Register;
+export default Login;

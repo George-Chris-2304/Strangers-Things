@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FetchedPostRows from "../FetchedPostRows";
+import Post from "../PostForm/postForm";
 import "./fetchPost.css";
 
 const COHORT_NAME = "2304-FTB-ET-WEB-FT";
@@ -41,6 +42,7 @@ export default function FetchPosts() {
             onChange={(event) => setSearchQuery(event.target.value)}
           />
         </form>
+        <Post />
       </div>
 
       <div className="right-panel">
