@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import FetchedPostRows from "../FetchedPostRows";
+import FetchedPostRows from "../FetchedPostRows/FetchedPostRows";
 import Post from "../PostForm/postForm";
 import "./fetchPost.css";
 

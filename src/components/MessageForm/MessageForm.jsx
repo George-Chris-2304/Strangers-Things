@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { registerUser } from "../api adapters";
+import { registerUser } from "../../api adapters";
 
 const MessageForm = (props) => {
   const isLoggedIn = props.isLoggedIn;
