@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import FetchPosts from "./components/FetchPost/fetchPost";
 import Register from "./components/RegistrationForm/registrationForm";
 import NavBar from "./components/Navbar/Navbar";
+// import Login from "./components/LoginForm/loginForm";
 
 import "./App.css";
 
