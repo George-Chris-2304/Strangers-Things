@@ -5,7 +5,6 @@ export default function FetchedPostRows({ post }) {
     <tr id="things-items">
       <td>{post.title}</td>
       <td>Price: {post.price}</td>
-      <td>{post.description}</td>
     </tr>
   );
 }
