@@ -31,7 +31,7 @@ function App() {
           element={<Register setIsLoggedIn={setIsLoggedIn} />}
         />
       </Routes>
-    </div>
+  </div>
   );
 }
 
