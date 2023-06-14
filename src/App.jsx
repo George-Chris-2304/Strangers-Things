@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import FetchPosts from "./components/fetchPost";
-import Register from "./components/registrationForm";
-import NavBar from "./components/Navbar";
+import FetchPosts from "./components/FetchPost/fetchPost";
+import Register from "./components/RegistrationForm/registrationForm";
+import NavBar from "./components/Navbar/Navbar";
+import Login from "./components/LoginForm/loginForm";
 
 import "./App.css";
 
@@ -30,6 +31,7 @@ function App() {
           path="/register"
           element={<Register setIsLoggedIn={setIsLoggedIn} />}
         />
+        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />}/>
       </Routes>
   </div>
   );

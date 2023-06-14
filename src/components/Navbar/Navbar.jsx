@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
   console.log(isLoggedIn);
   return (
-    <div>
+    <div className="Navbar">
       {isLoggedIn ? (
         <>
-          <Link to="/">Home </Link>
+          <Link className="Navbar-link" to="/">Home </Link>
           <button
             onClick={() => {
               setIsLoggedIn(false);
@@ -19,9 +20,9 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
         </>
       ) : (
         <>
-          <Link to="/">Home </Link>
-          <Link to="/register">Register </Link>
-          <Link to="/login">Login </Link>
+          <Link className="Navbar-link" to="/">Home </Link>
+          <Link className="Navbar-link" to="/register">Register </Link>
+          <Link className="Navbar-link" to="/login">Login </Link>
         </>
       )}
     </div>
