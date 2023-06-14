@@ -1,28 +1,28 @@
 import React, { useState } from "react";
-import { registerUser } from "../api adapters";
+import { registerUser } from "../../api adapters";
 import { useNavigate } from "react-router-dom";
 
 const Register = (props) => {
-  const setIsLoggedIn = props.setIsLoggedIn
+  const setIsLoggedIn = props.setIsLoggedIn;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate= useNavigate()
+  const navigate = useNavigate();
 
-  const handleSubmit = async(e)=>{
-    e.preventDefault() 
-   
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     try {
-      const result = await registerUser(username, password)
-      console.log(result)
+      const result = await registerUser(username, password);
+      console.log(result);
 
-      localStorage.setItem('token', result.token)
-      setIsLoggedIn(true)
+      localStorage.setItem("token", result.token);
+      setIsLoggedIn(true);
 
-      navigate('/')
+      navigate("/");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   return (
     <div>
       <h2>Register</h2>
@@ -47,7 +47,7 @@ const Register = (props) => {
             }}
           />
         </label>
-        <button type='submit'>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

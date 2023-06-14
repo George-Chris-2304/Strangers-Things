@@ -1,0 +1,42 @@
+.fetch-post {
+  margin: auto;
+  width: 100%;
+  min-height: 95%;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.right-panel {
+  background-color: rgb(84, 83, 83);
+  min-height: 92vh;
+  height: fit-content;
+  border-radius: 25px;
+  margin: 1.5vh 1vw 1.5vh 0.5vw;
+}
+
+.left-panel {
+  background-color: rgb(84, 83, 83);
+  min-height: 92vh;
+  height: fit-content;
+  margin: 1.5vh 0.5vw 1.5vh 1vw;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.fetched-table {
+  margin: 1% auto 2% auto;
+  max-width: 98%;
+}
+
+#search-bar-form {
+  max-width: 98%;
+}
+
+#things-items {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid black;
+  padding: 3%;
+  justify-content: space-evenly;
+}
