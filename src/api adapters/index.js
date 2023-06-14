@@ -17,7 +17,7 @@ export const registerUser = async (username, password) => {
     });
 
     const result = await response.json();
-  
+
     return result.data;
   } catch (error) {
     console.log(error);
@@ -44,5 +44,31 @@ export const loginUser = async (username, password) => {
     return result.data;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const userPost = async (title, description, price, willDeliver) => {
+  try {
+    const TOKEN = localStorage.getItem("token");
+    const response = await fetch(`${BASE_URL}/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TOKEN}`,
+      },
+      body: JSON.stringify({
+        post: {
+          title: title,
+          description: description,
+          price: price,
+          willDeliver: willDeliver,
+        },
+      }),
+    });
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
   }
 };
