@@ -31,10 +31,8 @@ const MessageForm = (props) => {
     }
   };
 
-  if(!isLoggedIn){
-    window.alert("You must log in to access this feature")
-    return null;
-  }
+  
+  
 
   return (
     <form onSubmit={handleSubmit}>

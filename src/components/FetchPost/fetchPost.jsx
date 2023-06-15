@@ -6,7 +6,7 @@ import "./fetchPost.css";
 const COHORT_NAME = "2304-FTB-ET-WEB-FT";
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
-export default function FetchPosts() {
+export default function FetchPost({setSelectedPostId}){
   const [allPosts, setAllPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -28,6 +28,9 @@ export default function FetchPosts() {
   const filteredThings = allPosts.filter((things) =>
     things.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  const DetailClick = () => {
+    setSelectedPostId(postId)
+}
 
   return (
     <div className="fetch-post">
@@ -60,6 +63,7 @@ export default function FetchPosts() {
                 key={post._id}
                 post={post}
                 setAllPosts={setAllPosts}
+                setSelectedPostId={setSelectedPostId} onClick={() => DetailClick(post) }
               />
             ))}
           </tbody>

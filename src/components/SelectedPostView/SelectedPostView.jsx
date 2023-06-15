@@ -1,65 +1,54 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
+import DeleteForm from "../DeleteForm/DeleteForm";
+import MessageForm from "../MessageForm/MessageForm";
 
-const COHORT_NAME = "2304-FTB-ET-WEB-FT";
-const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
-
-
-export default function SelectedPost({selectedPostId, setSelectedPostId, isLoggedIn}){
-    const [allPosts,setAllPosts]= useState({});
-
-   
-    useEffect(() => {
-        async function fetchSelectedPost(){
-            try {
-                const response = await fetch(`${BASE_URL}/posts`);
+export default function SelectedPost({selectedPostId, setSelectedPostId}){
+    const[allPosts,setAllPosts]=useState({});
+        
+        useEffect(() => {
+            async function fetchSPost(){
+            try{
+                const response = await fetch(`https://strangers-things.herokuapp.com/api/2304-FTB-ET-WEB-FT/posts/${selectedPostId}`);
                 const data = await response.json();
-                const fetchedPosts = data.data.posts;
-                setAllPosts(fetchedPosts);
-              } catch (error) {
-                console.error(error);
-              }
+                console.log(data);
+
+               
+                const ItemPost = data.data.posts
+
+                setAllPosts(ItemPost)
+            } catch (error){
+                console.error(error)
             }
-        
-            fetchSelectedPost();
-          }, [selectedPostId]);
-
+        }
     
-          if(!isLoggedIn){
-            window.alert("You must log in to access this feature")
-            return null;
-          }
-        
-    
-
-    return (
-        <div>
-          {allPosts ? (
-            <div>
-             
-              <table id= "selected-post">
-                <tbody>
-
-            
-
-                  <tr>
-                    <td>{post.price}</td>
-                  </tr>
-                 <tr>
-                    <td> {post.description}</td>
-                 </tr>
-                  <tr>
-                    <td>Posted by: {post.username}</td>
-                    
-                  </tr>
-                  
-                 
-                </tbody>
-              </table>
-              <button onClick={() => setSelectedPostId(null)}>Go Back</button>
-            </div>
-          ) : null}
-          
-        </div>
-      );
+    if(selectedPostId){
+        fetchSPost();
     }
-    
+}, [selectedPostId])
+
+
+
+return (
+    <div>
+      {allPosts ? (
+        <div>
+          <h2>Post Details</h2>
+          <table id="selected-post">
+            <tbody>
+              
+              <tr>
+                <td>{allPosts.price}</td>
+              </tr>
+              <tr>
+                <td>{allPosts.description}</td>
+              </tr>
+            </tbody>
+          </table>
+          <button onClick={() => setSelectedPostId(null)}>Go Back</button>
+          <DeleteForm postId={selectedPostId} />
+        <MessageForm postId={selectedPostId} />
+        </div>
+      ) : null}
+    </div>
+  );
+      }  
