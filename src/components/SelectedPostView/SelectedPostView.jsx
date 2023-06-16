@@ -3,7 +3,8 @@ import DeleteForm from "../DeleteForm/DeleteForm";
 import MessageForm from "../MessageForm/MessageForm";
 import "./SelectedPostView.css"
 
-export default function SelectedPost({selectedPostId, setSelectedPostId, allPosts,}){
+
+export default function SelectedPost({selectedPostId, setSelectedPostId, allPosts,setAllPosts}){
   const [filteredSelectedPost, setFilteredSelectedPost] = useState(null);
         console.log(typeof selectedPostId);
         useEffect(() => {
@@ -55,8 +56,20 @@ return (
               <tr>
                 <td>{filteredSelectedPost.description}</td>
               </tr>
+              
               <tr>
-                <td>{filteredSelectedPost.messages}</td>
+                <td>
+                  <h3>Messages:</h3>
+                  {filteredSelectedPost.messages.length > 0 ? (
+                    <ul>
+                      {filteredSelectedPost.messages.map((message) => (
+                        <li key={message._id}>{message.content}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>No messages to display.</p>
+                  )}
+                </td>
               </tr>
               
             </tbody>
@@ -64,7 +77,7 @@ return (
           
 <div className="action-buttons-area">
           <MessageForm id="messageform1" postId={selectedPostId} />
-          <DeleteForm id="Delete-Button" postId={selectedPostId} />
+          <DeleteForm id="Delete-Button" postId={selectedPostId} setAllPosts={setAllPosts} />
           <button id="The-Button" onClick={() => setSelectedPostId(null)}>Go Back</button>
          </div>
         </div>

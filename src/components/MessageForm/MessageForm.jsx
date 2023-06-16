@@ -30,6 +30,16 @@ const MessageForm = (props) => {
       });
       const result = await response.json();
       console.log(result);
+      if(response.status=== 500){
+        alert("You can't send a message to yourself!")
+      }else if (response.status === 401){
+        alert("Please log in to access additional features.")
+      } else if(response.ok){
+        alert("Message successfully sent.");
+        setMessage(" ");
+        setName(" ");
+        setEmail(" ");
+      }
       
     } catch (err) {
       console.error(err);
@@ -68,4 +78,5 @@ const MessageForm = (props) => {
 };
 
 export default MessageForm;
+
 

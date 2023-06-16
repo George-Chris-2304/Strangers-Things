@@ -18,12 +18,17 @@ export default function DeleteForm({ postId,setAllPosts}) {
       });
       const result = await response.json();
       console.log(result);
-     /* if (response.ok) {
-        setAllPosts((previousAllPosts) =>
-          previousAllPosts.filter((post) => post._id !== postId)
-        );
-        
-    }*/
+     if (response.status===200) {
+        window.location.reload();
+        alert("Post successfully deleted.")
+    } else if(response.status === 500) {
+      alert("You are not authorized to preform this action!")
+
+    } else if(response.status ===401){
+      alert("Please Log in to access additional features.")
+    }
+   
+  
     } catch (error) {
       console.error(error);
     }
