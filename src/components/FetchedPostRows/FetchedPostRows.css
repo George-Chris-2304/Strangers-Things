@@ -1,0 +1,15 @@
+#The-Rows{
+    background-color: rgb(84, 83, 83);
+    height: fit-content;
+    margin: 1.5vh 0.5vw 1.5vh 1vw;
+    border-radius: 25px;
+    text-align: center;
+    align-content: center;
+    display: flex;
+   cursor: pointer;
+
+}
+
+#FPR-name:hover{
+    color:black;
+}

@@ -1,13 +1,18 @@
 import React from "react";
+import "./FetchedPostRows.css"
 
-export default function FetchedPostRows({ post }) {
-  return (
-    <tr id="things-items">
-      <td>
-        <strong>{post.title}</strong>
+export default function FetchPostRows({post, setSelectedPostId}){
+    return(
+    
+<tr onClick={() => {
+    setSelectedPostId(post._id);
+}}>
+      <td id="The-Rows" >
+        <strong id="FPR-name">{post.title}</strong>
       </td>
-      <td>{post.description}</td>
-      <td>Price: {post.price}</td>
+      <td></td>
+      <td> for: {post.price}</td>
     </tr>
-  );
+   
+    );
 }

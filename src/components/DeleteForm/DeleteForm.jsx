@@ -1,50 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
+const COHORT_NAME = "2304-FTB-ET-WEB-FT";
+const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
-export default function DeleteForm({ setAllPosts, isLoggedIn}) {
-  const [deletePost, setDeletePost] = useState("");
 
-  async function sendDeleteReq(id) {
+
+export default function DeleteForm({ postId,setAllPosts}) {
+  const deletePost = async () => {
+    
     try {
-      const response = await fetch(`https://strangers-things.herokuapp.com/api/2304-FTB-ET-WEB-FT/posts/POST_ID`, {
-        method: 'DELETE',
+      const TOKEN = localStorage.getItem("token");
+      const response = await fetch(`${BASE_URL}/posts/${postId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${TOKEN}`
+        },
       });
-      if (response.ok) {
-        setAllPosts(previousAllPosts => previousAllPosts.filter(fetchedPosts=>fetchedPosts.id !== id));
-      }
-      setDeletePost(""); 
-      window.location.reload();
+      const result = await response.json();
+      console.log(result);
+     /* if (response.ok) {
+        setAllPosts((previousAllPosts) =>
+          previousAllPosts.filter((post) => post._id !== postId)
+        );
+        
+    }*/
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
-  }
+  
+  };
 
-  if(!isLoggedIn){
-    window.alert("You must log in to access this feature")
-    return null;
-  }
+  
 
   return (
-    <div id="Delete-form">
-      <input
-        type="text"
-        placeholder="Enteer post id Here"
-        value={deletePost}
-        onChange={(event) => setDeletePost(event.target.value)}
-      />
-      <button
-        type="button"
-        onClick={() => {
-          if (deletePost) {
-            sendDeleteReq(deletePost);
-            
-            
-            
-          }
-        }}
-        disabled={!deletePost}
-      >
+    
+      <button id="Delete-Button" type="button" onClick={deletePost}>
         Delete Post
       </button>
-    </div>
+    
   );
 }

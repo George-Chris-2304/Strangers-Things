@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { registerUser } from "../../api adapters";
+
+
+const COHORT_NAME = "2304-FTB-ET-WEB-FT";
+const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
 const MessageForm = (props) => {
+  const postId= props.postId
   const isLoggedIn = props.isLoggedIn;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,11 +15,12 @@ const MessageForm = (props) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${BASE_URL}/posts/${post.id}`, {
+      const TOKEN = localStorage.getItem("token");
+      const response = await fetch(`${BASE_URL}/posts/${props.postId}/messages`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${registerUser}`
+          'Authorization': `Bearer ${TOKEN}`
         },
         body: JSON.stringify({
           message: {
@@ -31,12 +36,12 @@ const MessageForm = (props) => {
     }
   };
 
-  if(!isLoggedIn){
-    window.alert("You must log in to access this feature")
-    return null;
-  }
+  
+  
 
   return (
+    
+     <div id="messagePlace">
     <form onSubmit={handleSubmit}>
       <input
         type="text"
@@ -50,6 +55,7 @@ const MessageForm = (props) => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
+      
       <textarea
         placeholder="Message"
         value={message}
@@ -57,6 +63,7 @@ const MessageForm = (props) => {
       ></textarea>
       <button type="submit">Submit</button>
     </form>
+    </div>
   );
 };
 

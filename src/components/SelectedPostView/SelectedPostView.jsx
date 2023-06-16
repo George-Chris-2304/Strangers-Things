@@ -1,65 +1,74 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
+import DeleteForm from "../DeleteForm/DeleteForm";
+import MessageForm from "../MessageForm/MessageForm";
+import "./SelectedPostView.css"
 
-const COHORT_NAME = "2304-FTB-ET-WEB-FT";
-const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
-
-
-export default function SelectedPost({selectedPostId, setSelectedPostId, isLoggedIn}){
-    const [allPosts,setAllPosts]= useState({});
-
-   
-    useEffect(() => {
-        async function fetchSelectedPost(){
-            try {
-                const response = await fetch(`${BASE_URL}/posts`);
-                const data = await response.json();
-                const fetchedPosts = data.data.posts;
-                setAllPosts(fetchedPosts);
-              } catch (error) {
-                console.error(error);
-              }
-            }
-        
-            fetchSelectedPost();
-          }, [selectedPostId]);
-
-    
-          if(!isLoggedIn){
-            window.alert("You must log in to access this feature")
-            return null;
-          }
-        
-    
-
-    return (
-        <div>
-          {allPosts ? (
-            <div>
-             
-              <table id= "selected-post">
-                <tbody>
-
-            
-
-                  <tr>
-                    <td>{post.price}</td>
-                  </tr>
-                 <tr>
-                    <td> {post.description}</td>
-                 </tr>
-                  <tr>
-                    <td>Posted by: {post.username}</td>
-                    
-                  </tr>
-                  
-                 
-                </tbody>
-              </table>
-              <button onClick={() => setSelectedPostId(null)}>Go Back</button>
-            </div>
-          ) : null}
+export default function SelectedPost({selectedPostId, setSelectedPostId, allPosts,}){
+  const [filteredSelectedPost, setFilteredSelectedPost] = useState(null);
+        console.log(typeof selectedPostId);
+        useEffect(() => {
           
-        </div>
-      );
-    }
+            async function fetchSPost(){
+              const filteredPost = allPosts.find((e) => {
+                console.log(e)
+                if(e._id===selectedPostId){
+                  return true
     
+                }
+              })
+              if(filteredPost){
+                setFilteredSelectedPost(filteredPost)
+              }
+           else{ 
+setFilteredSelectedPost(null)
+           }
+        } 
+    
+    if(selectedPostId){
+        fetchSPost();
+    }
+}, [selectedPostId])
+
+
+
+return (
+    <div className="postPage">
+     
+      {filteredSelectedPost ? (
+        <div>
+          <h2 id="selected-page">{filteredSelectedPost.title} </h2>
+          <table id="selected-post">
+            <tbody>
+             
+              <tr>
+                <td>{filteredSelectedPost.price}</td>
+              </tr>
+              <tr>
+                <td>Location:{filteredSelectedPost.location}</td>
+              </tr>
+              <tr>
+                <td>{filteredSelectedPost.willDeliver}</td>
+              </tr>
+              <tr>
+                <td>Posted By: {filteredSelectedPost.author.username}</td>
+              </tr>
+              <tr>
+                <td>{filteredSelectedPost.description}</td>
+              </tr>
+              <tr>
+                <td>{filteredSelectedPost.messages}</td>
+              </tr>
+              
+            </tbody>
+          </table>
+          
+<div className="action-buttons-area">
+          <MessageForm id="messageform1" postId={selectedPostId} />
+          <DeleteForm id="Delete-Button" postId={selectedPostId} />
+          <button id="The-Button" onClick={() => setSelectedPostId(null)}>Go Back</button>
+         </div>
+        </div>
+      ) : null}
+    </div>
+  );
+      }  
