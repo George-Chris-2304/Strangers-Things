@@ -6,8 +6,8 @@ import "./fetchPost.css";
 const COHORT_NAME = "2304-FTB-ET-WEB-FT";
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
-export default function FetchPost({setSelectedPostId}){
-  const [allPosts, setAllPosts] = useState([]);
+export default function FetchPost({setSelectedPostId, allPosts, setAllPosts}){
+  
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {

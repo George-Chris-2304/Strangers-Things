@@ -2,24 +2,26 @@ import { useState, useEffect } from "react";
 import DeleteForm from "../DeleteForm/DeleteForm";
 import MessageForm from "../MessageForm/MessageForm";
 
-export default function SelectedPost({selectedPostId, setSelectedPostId}){
-    const[allPosts,setAllPosts]=useState({});
-        
+export default function SelectedPost({selectedPostId, setSelectedPostId, allPosts}){
+  const [filteredSelectedPost, setFilteredSelectedPost] = useState(null);
+        console.log(typeof selectedPostId);
         useEffect(() => {
+          
             async function fetchSPost(){
-            try{
-                const response = await fetch(`https://strangers-things.herokuapp.com/api/2304-FTB-ET-WEB-FT/posts/${selectedPostId}`);
-                const data = await response.json();
-                console.log(data);
-
-               
-                const ItemPost = data.data.posts
-
-                setAllPosts(ItemPost)
-            } catch (error){
-                console.error(error)
-            }
-        }
+              const filteredPost = allPosts.find((e) => {
+                console.log(e)
+                if(e._id===selectedPostId){
+                  return true
+    
+                }
+              })
+              if(filteredPost){
+                setFilteredSelectedPost(filteredPost)
+              }
+           else{ 
+setFilteredSelectedPost(null)
+           }
+        } 
     
     if(selectedPostId){
         fetchSPost();
@@ -30,17 +32,17 @@ export default function SelectedPost({selectedPostId, setSelectedPostId}){
 
 return (
     <div>
-      {allPosts ? (
+      {filteredSelectedPost ? (
         <div>
           <h2>Post Details</h2>
           <table id="selected-post">
             <tbody>
               
               <tr>
-                <td>{allPosts.price}</td>
+                <td>{filteredSelectedPost.price}</td>
               </tr>
               <tr>
-                <td>{allPosts.description}</td>
+                <td>{filteredSelectedPost.description}</td>
               </tr>
             </tbody>
           </table>
