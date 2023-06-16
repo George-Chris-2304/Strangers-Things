@@ -26,7 +26,7 @@ function App() {
 
     <>
     {selectedPostId ? (
-      <SelectedPost selectedPostId={selectedPostId} setSelectedPostId={setSelectedPostId} allPosts={allPosts}/>
+      <SelectedPost selectedPostId={selectedPostId} setSelectedPostId={setSelectedPostId} allPosts={allPosts} />
     ):(
     
 
