@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { userPost } from "../../api adapters";
 
+import "./postForm.css"
+
 const Post = (props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -13,17 +15,19 @@ const Post = (props) => {
     try {
       const result = await userPost(title, description, price, willDeliver);
       console.log(result);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
   };
   return (
-    <div>
-      <h2>Create A Post</h2>
+    <div className="postForm">
+      <h2 id="pf-title">Create A Post:</h2>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="np-label">
           Title:
           <input
+          id="title"
             type="text"
             placeholder="Banana keychains"
             value={title}
@@ -33,9 +37,10 @@ const Post = (props) => {
           />
         </label>
         <br />
-        <label>
+        <label className="np-label">
           Description:
           <input
+          id="description"
             type="text"
             placeholder="Custom made..."
             value={description}
@@ -45,9 +50,10 @@ const Post = (props) => {
           />
         </label>
         <br />
-        <label>
+        <label className="np-label">
           Price:
           <input
+          id="price"
             type="text"
             placeholder="$62.49"
             value={price}
@@ -57,9 +63,10 @@ const Post = (props) => {
           />
         </label>
         <br />
-        <label>
+        <label className="np-label">
           Willing to deliver?:
           <input
+          id="deliver"
             type="text"
             value={willDeliver}
             placeholder="Enter true or false"
@@ -68,7 +75,8 @@ const Post = (props) => {
             }}
           />
         </label>
-        <button type="submit">Submit</button>
+        <br />
+        <button className="np-button" type="submit">Submit</button>
       </form>
     </div>
   );

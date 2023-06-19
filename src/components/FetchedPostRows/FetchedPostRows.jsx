@@ -7,11 +7,11 @@ export default function FetchPostRows({post, setSelectedPostId}){
 <tr onClick={() => {
     setSelectedPostId(post._id);
 }}>
+      <td>Posted By: {post.author.username}</td>
       <td id="The-Rows" >
-        <strong id="FPR-name">{post.title}</strong>
+        <strong id="FPR-name">Item: {post.title}</strong>
       </td>
-      
-      <td> for: {post.price}</td>
+      <td>Price: {post.price}</td>
     </tr>
    
     );

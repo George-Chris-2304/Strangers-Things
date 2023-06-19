@@ -1,0 +1,65 @@
+.postForm {
+  /* background-color: red; */
+  width: 100%;
+  height: 80vh;
+  display: grid;
+  margin: auto;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+}
+
+#pf-title {
+  grid-column: span 2;
+  color: white;
+  background-color: rgb(60, 59, 59);
+  width: 95%;
+  font-size: 40px;
+  height: 8vh;
+  margin: 5px auto 15px auto;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.np-label {
+  background-color: rgb(60, 59, 59);
+  border-radius: 15px;
+  height: 10vh;
+  width: 100%;
+  font-size: 18px;
+  margin: 0px 1px 0px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#title,
+#description,
+#deliver,
+#price {
+  background-color: rgb(187, 183, 183);
+  border: 0;
+  border-radius: 15px;
+  height: 5vh;
+  width: 15vw;
+  font-size: 18px;
+  margin: 0px 5px 0px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.np-button {
+  grid-column: span 2;
+  height: 5vh;
+  width: 20vw;
+  margin: auto;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(107, 106, 106);
+  cursor: pointer;
+  color: white;
+}

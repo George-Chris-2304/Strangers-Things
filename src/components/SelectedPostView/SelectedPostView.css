@@ -2,9 +2,9 @@
 
     background-color: rgb(84, 83, 83);
   min-height: 92vh;
+  width: 50vw;
   height: fit-content;
   border-radius: 25px;
-  margin: 1.5vh 1vw 1.5vh 0.5vw;
   text-align: center;
   }
 
@@ -29,7 +29,7 @@
     
 }
 
-.Delete-Button{
+#Delete-Button{
     border-radius: 8px;
     border: 1px solid transparent;
     padding: 0.6em 1.2em;
@@ -45,4 +45,8 @@
 
 #selected-page{
     text-align: center;
+}
+
+#selected-post{
+  margin: auto;
 }
