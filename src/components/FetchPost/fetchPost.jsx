@@ -6,8 +6,11 @@ import "./fetchPost.css";
 const COHORT_NAME = "2304-FTB-ET-WEB-FT";
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
-export default function FetchPost({setSelectedPostId, allPosts, setAllPosts}){
-  
+export default function FetchPost({
+  setSelectedPostId,
+  allPosts,
+  setAllPosts,
+}) {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -30,18 +33,19 @@ export default function FetchPost({setSelectedPostId, allPosts, setAllPosts}){
     things.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
   const DetailClick = () => {
-    setSelectedPostId(postId)
-}
+    setSelectedPostId(postId);
+  };
 
   return (
     <div className="fetch-post">
       <div className="left-panel">
         <form id="search-bar-form">
-          <label htmlFor="search-query">Search: </label>
+          <label htmlFor="search-query"></label>
           <input
+            id="search-bar"
             name="search-query"
             type="text"
-            placeholder="Type Here"
+            placeholder="Search For A Stranger's Things"
             value={searchQuery}
             onChange={(event) => setSearchQuery(event.target.value)}
           />
@@ -64,7 +68,8 @@ export default function FetchPost({setSelectedPostId, allPosts, setAllPosts}){
                 key={post._id}
                 post={post}
                 setAllPosts={setAllPosts}
-                setSelectedPostId={setSelectedPostId} onClick={() => DetailClick(post) }
+                setSelectedPostId={setSelectedPostId}
+                onClick={() => DetailClick(post)}
               />
             ))}
           </tbody>

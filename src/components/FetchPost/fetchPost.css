@@ -31,6 +31,19 @@
 
 #search-bar-form {
   max-width: 98%;
+  height: fit-content;
+  /* background-color: red; */
+  margin: auto;
+}
+
+#search-bar{
+  text-align: center;
+  font-size: 25px;
+  margin: 1vh auto;
+  border-radius: 15px;
+  border: solid 1px black;
+  height: 5vh;
+  width: 95%;
 }
 
 #things-items {
