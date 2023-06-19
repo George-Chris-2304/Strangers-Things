@@ -4,7 +4,7 @@ const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
 
 
-export default function DeleteForm({ postId,setAllPosts}) {
+export default function DeleteForm({ postId,setAllPosts, post}) {
   const deletePost = async () => {
     
     try {
@@ -34,14 +34,14 @@ export default function DeleteForm({ postId,setAllPosts}) {
     }
   
   };
+const currentUser = localStorage.getItem("username");
 
   
-
   return (
-    
+  
       <button id="Delete-Button" type="button" onClick={deletePost}>
         Delete Post
       </button>
-    
+  
   );
 }

@@ -15,6 +15,7 @@ export default function FetchPost({setSelectedPostId, allPosts, setAllPosts}){
       try {
         const response = await fetch(`${BASE_URL}/posts`);
         const data = await response.json();
+        console.log(response);
         const fetchedPosts = data.data.posts;
         setAllPosts(fetchedPosts);
       } catch (error) {
@@ -40,7 +41,7 @@ export default function FetchPost({setSelectedPostId, allPosts, setAllPosts}){
           <input
             name="search-query"
             type="text"
-            placeholder="Type Name Here"
+            placeholder="Type Here"
             value={searchQuery}
             onChange={(event) => setSearchQuery(event.target.value)}
           />
