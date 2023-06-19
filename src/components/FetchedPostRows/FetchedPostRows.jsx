@@ -10,7 +10,7 @@ export default function FetchPostRows({post, setSelectedPostId}){
       <td id="The-Rows" >
         <strong id="FPR-name">{post.title}</strong>
       </td>
-      <td></td>
+      
       <td> for: {post.price}</td>
     </tr>
    

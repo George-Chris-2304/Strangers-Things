@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import DeleteForm from "../DeleteForm/DeleteForm";
 import MessageForm from "../MessageForm/MessageForm";
 import "./SelectedPostView.css"
+import MessageList from "../MyMessages/MyMessages";
 
-export default function SelectedPost({selectedPostId, setSelectedPostId, allPosts,}){
+export default function SelectedPost({selectedPostId, setSelectedPostId, allPosts,setAllPosts}){
   const [filteredSelectedPost, setFilteredSelectedPost] = useState(null);
         console.log(typeof selectedPostId);
         useEffect(() => {
@@ -55,16 +56,20 @@ return (
               <tr>
                 <td>{filteredSelectedPost.description}</td>
               </tr>
+              
               <tr>
-                <td>{filteredSelectedPost.messages}</td>
+                <td>
+                 
+                </td>
               </tr>
               
             </tbody>
           </table>
           
 <div className="action-buttons-area">
+  <MessageList postId={selectedPostId}/>
           <MessageForm id="messageform1" postId={selectedPostId} />
-          <DeleteForm id="Delete-Button" postId={selectedPostId} />
+          <DeleteForm id="Delete-Button" postId={selectedPostId} setAllPosts={setAllPosts} filteredSelectedPost={filteredSelectedPost}/>
           <button id="The-Button" onClick={() => setSelectedPostId(null)}>Go Back</button>
          </div>
         </div>
