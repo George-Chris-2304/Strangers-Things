@@ -22,7 +22,7 @@ export default function DeleteForm({ postId,setAllPosts, post}) {
         window.location.reload();
         alert("Post successfully deleted.")
     } else if(response.status === 500) {
-      alert("You are not authorized to preform this action!")
+      alert("You are not authorized to perform this action!")
 
     } else if(response.status ===401){
       alert("Please Log in to access additional features.")

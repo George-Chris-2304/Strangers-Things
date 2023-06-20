@@ -12,6 +12,9 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
             <Link className="Navbar-link" to="/">
               Home{" "}
             </Link>
+            <Link className="Navbar-link" to="/MessageList">
+              Inbox{" "}
+            </Link>
             <button
               id="logout"
               className="Navbar-link"

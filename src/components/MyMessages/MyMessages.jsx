@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import "./MyMessages.css";
 
 const MessageList = (props) => {
   
@@ -38,7 +39,7 @@ const MessageList = (props) => {
       {filteredMessages.map((message, idx) => (
         <div className="message-list" key={idx}>
           <div className="messages">
-            <p id="inbox-title">Re: {message.post.title}</p>
+            <p id="inbox-title"><strong>{message.post.title}</strong></p>
             <p>Message: {message.content}</p>
             <p>From: {message.fromUser.username}</p>
           </div>

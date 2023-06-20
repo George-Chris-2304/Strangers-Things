@@ -36,7 +36,7 @@ const MessageForm = (props) => {
       console.log('Response:', response);
       console.log('Result:', result);
       if(response.status=== 500){
-        alert("You can't send a message to yourself!")
+        alert("Error")
       }else if (response.status === 401){
         alert("Please log in to access additional features.")
       } else if(response.ok){

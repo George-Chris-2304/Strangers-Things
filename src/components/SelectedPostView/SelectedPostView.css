@@ -1,16 +1,38 @@
 .postPage {
 
-    background-color: rgb(84, 83, 83);
-  min-height: 92vh;
-  height: fit-content;
-  border-radius: 25px;
-  margin: 1.5vh 1vw 1.5vh 0.5vw;
-  text-align: center;
-  }
+  background-color: rgb(84, 83, 83);
+min-height: 92vh;
+width: 50vw;
+height: fit-content;
+border-radius: 25px;
+text-align: center;
+justify-content: space-between;
+margin-bottom: 5px;
+}
 
 
 #The-Button{
-    border-radius: 8px;
+  border-radius: 8px;
+border: 1px solid transparent;
+padding: 0.6em 1.2em;
+font-size: 1em;
+font-weight: 500;
+font-family: inherit;
+background-color: #100909;
+color:white;
+cursor: pointer;
+transition: border-color 0.25s;
+display:flex;
+
+}
+
+#The-Button:hover{
+  color:rgb(239, 2, 2);
+  
+}
+
+#Delete-Button{
+  border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -20,29 +42,21 @@
   color:white;
   cursor: pointer;
   transition: border-color 0.25s;
-  display:flex;
-  
-}
-
-#The-Button:hover{
-    color:rgb(239, 2, 2);
-    
-}
-
-.Delete-Button{
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #100909;
-    color:white;
-    cursor: pointer;
-    transition: border-color 0.25s;
 
 }
 
 #selected-page{
-    text-align: center;
+  text-align: center;
+}
+
+#selected-post{
+margin: auto;
+}
+.action-buttons-area{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items:flex-start;
+  justify-content: space-between;
+  margin-top: auto;
+  margin-bottom: 20%;
 }

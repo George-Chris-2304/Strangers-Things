@@ -5,7 +5,7 @@ import Register from "./components/RegistrationForm/registrationForm";
 import NavBar from "./components/Navbar/Navbar";
 import Login from "./components/LoginForm/loginForm";
 import SelectedPost from "./components/SelectedPostView/SelectedPostView";
-
+import MessageList from "./components/MyMessages/MyMessages";
 import "./App.css";
 
 function App() {
@@ -44,6 +44,10 @@ function App() {
         <Route
           path="/login"
           element={<Login setIsLoggedIn={setIsLoggedIn} />}
+        />
+        <Route
+        path="/MessageList"
+        element={<MessageList setIsLoggedIn={setIsLoggedIn}/>}
         />
       </Routes>
     </div>
