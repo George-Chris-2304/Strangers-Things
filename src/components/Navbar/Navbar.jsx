@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
-  console.log(isLoggedIn);
+ 
   return (
     <div className="Navbar">
       <div className="Navbar-inner">

@@ -1,5 +1,5 @@
 .postPage {
-
+display: flex;
   background-color: rgb(84, 83, 83);
 min-height: 92vh;
 width: 50vw;

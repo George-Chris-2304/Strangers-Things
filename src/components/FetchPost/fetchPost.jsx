@@ -46,7 +46,7 @@ export default function FetchPost({setSelectedPostId, allPosts, setAllPosts}){
             onChange={(event) => setSearchQuery(event.target.value)}
           />
         </form>
-        <Post />
+        <Post setAllPosts = {setAllPosts}/>
       </div>
 
       <div className="right-panel">

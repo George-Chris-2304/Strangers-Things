@@ -70,5 +70,6 @@ export const userPost = async (title, description, price, willDeliver) => {
     return result;
   } catch (err) {
     console.error(err);
+    throw err;
   }
 };

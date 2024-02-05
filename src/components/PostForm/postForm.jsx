@@ -1,20 +1,29 @@
 import React, { useState } from "react";
 import { userPost } from "../../api adapters";
+import { useNavigate } from "react-router-dom";
 
-const Post = (props) => {
+const Post = ({setAllPosts}) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [willDeliver, setWillDeliver] = useState("");
-
+const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const result = await userPost(title, description, price, willDeliver);
       console.log(result);
+
+      if (result && result.success) {
+        console.log("Post successful");
+        setAllPosts((prevPosts) => [result.data.post, ...prevPosts]);
+        navigate('/');
+      } else {
+        console.log("Post failed");
+      }
     } catch (error) {
-      console.log(error);
+      console.error("Error posting:", error);
     }
   };
   return (
